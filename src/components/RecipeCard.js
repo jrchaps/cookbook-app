@@ -9,20 +9,39 @@ const Card = styled.div`
   align-items: center;
   width: 100%;
   @media (min-width: 768px) {
-    width: 300px;
+    width: calc(100% / 2 - 64px);
+    margin-bottom: 16px;
   }
-  margin: 40px;
-  @media (max-width: 768px) {
-    margin: 16px;
+  @media (min-width: 1440px) {
+    width: calc(100% / 3 - 48px);
   }
-  padding: 8px;
+  @media (min-width: 2560px) {
+    width: calc(100% / 4 - 48px);
+  }
+  margin: 16px 16px 0px 16px;
+  &:nth-last-child(1) {
+    margin-bottom: 16px;
+  }
+  padding: 16px;
   background: white;
   box-shadow: ${props => props.theme.shadow};
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
 const Title = styled.h2`
   text-align: center;
-  margin: 12px 0px;
+  margin: 6px 0px;
   font-weight: normal;
   color: ${props => props.theme.black.dark};
 `;
@@ -34,26 +53,30 @@ const Subtitle = styled.h3`
 `;
 
 const Image = styled.img`
-  height: 200px;
-  width: 200px;
-  @media (max-width: 768px) {
-    height: 150px;
-    width: 150px;
+  height: 150px;
+  width: 150px;
+  @media (min-width: 768px) {
+    height: 200px;
+    width: 200px;
   }
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   border-radius: 20px;
 `;
 
 const RecipeCard = props => {
   return (
     <Card>
-      <Title>{props.recipe.recipe.label}</Title>
-      <Subtitle>Calories: {Math.ceil(props.recipe.recipe.calories)}</Subtitle>
+      <TextContainer>
+        <Title>{props.recipe.recipe.label}</Title>
+        <Subtitle>Calories: {Math.ceil(props.recipe.recipe.calories)}</Subtitle>
+      </TextContainer>
       <FavoriteButton props={props} />
-      <Image
-        src={props.recipe.recipe.image}
-        alt={props.recipe.recipe.label}
-      ></Image>
+      <ImageContainer>
+        <Image
+          src={props.recipe.recipe.image}
+          alt={props.recipe.recipe.label}
+        ></Image>
+      </ImageContainer>
       <Ingredients props={props} />
     </Card>
   );
@@ -67,7 +90,7 @@ const StyledFavoriteButton = styled.button`
   justify-content: center;
   height: 56px;
   width: 56px;
-  margin: 16px 0px;
+  margin: 6px 0px;
   padding: 0px;
   cursor: pointer;
   user-select: none;
@@ -93,7 +116,7 @@ const FavoriteButton = props => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorites);
   const [checked, setChecked] = useState(
-    favorites[props.props.recipe.recipe.uri] ? true : false
+    favorites[props.props.recipe.recipe.uri] ? true : false,
   );
 
   const toggleFavorite = e => {
@@ -133,7 +156,9 @@ const IngredientsButton = styled.button`
   justify-content: space-between;
   width: 175px;
   padding: 10px 20px;
-  margin-bottom: 8px;
+
+  margin: auto;
+  margin-bottom: 16px;
   font-weight: bold;
   user-select: none;
   background: ${props => props.theme.color.primary.main};
@@ -158,10 +183,10 @@ const IngredientsButtonIcon = styled.i`
 
 const IngredientList = styled.ul`
   height: ${props => props.height};
-  padding: 0px 32px;
-  @media (max-width: 768px) {
-    padding: 0px 16px;
-  }
+  width: 100%;
+  padding: 0px 8px;
+  margin: 0px;
+  box-sizing: border-box;
   overflow: hidden;
   list-style-type: none;
   transition: height 0.3s ${props => props.theme.transitionTimingFunction};

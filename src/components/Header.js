@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchRecipes } from '../store/actions';
 import styled from 'styled-components/macro';
 import { useHistory, useLocation, NavLink } from 'react-router-dom';
-import { fetchRecipes } from '../store/actions';
-import { useDispatch } from 'react-redux';
 
 const HeaderBar = styled.header`
   position: fixed;
@@ -109,7 +109,7 @@ const Nav = () => {
         <StyledNavLink exact to='/'>
           Home
         </StyledNavLink>
-        <NavIndicator active={location.pathname !== '/favorites'} />
+        <NavIndicator active={location.pathname === '/'} />
       </NavTab>
       <NavTab>
         <StyledNavLink to='favorites'>Favorites</StyledNavLink>
@@ -159,8 +159,20 @@ const SearchInput = styled.input`
 
 const SearchForm = () => {
   const [query, setQuery] = useState('');
-  const dispatch = useDispatch();
+  const { search } = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const inputRef = useRef();
+
+  useEffect(() => {
+    if (search) {
+      let query = search.split('=')[1];
+      query = query.split('%20');
+      query = query.join(' ');
+      setQuery(query);
+      dispatch(fetchRecipes(query));
+    }
+  }, [search]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -170,6 +182,7 @@ const SearchForm = () => {
 
   const handleReset = e => {
     setQuery('');
+    inputRef.current.focus();
   };
 
   const handleButtonClick = e => {
@@ -193,6 +206,7 @@ const SearchForm = () => {
           placeholder='Search for recipes...'
           value={query}
           onChange={handleInputChange}
+          ref={inputRef}
         />
         {query && (
           <SearchFormButton type='reset' onMouseDown={handleButtonClick}>

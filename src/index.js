@@ -16,19 +16,19 @@ const theme = {
   black: {
     dark: 'rgba(0, 0, 0, 0.87)',
     medium: 'rgba(0, 0, 0, 0.6)',
-    light: 'rgba(0, 0, 0, 0.38)'
+    light: 'rgba(0, 0, 0, 0.38)',
   },
   color: {
     primary: {
       main: '#ffcc80',
-      dark: '#ca9b52'
+      dark: '#ca9b52',
     },
     secondary: {
-      main: '#ff8a65'
-    }
+      main: '#ff8a65',
+    },
   },
   transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-  shadow: '0px 1px 3px 1px rgba(0, 0, 0, 0.2)'
+  shadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2)',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -44,8 +44,8 @@ const store = createStore(
     applyMiddleware(thunkMiddleware),
     window.__REDUX_DEVTOOLS_EXTENSION__
       ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : f => f
-  )
+      : f => f,
+  ),
 );
 
 ReactDOM.render(
@@ -55,7 +55,7 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
