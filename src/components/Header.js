@@ -172,7 +172,7 @@ const SearchForm = () => {
       setQuery(query);
       dispatch(fetchRecipes(query));
     }
-  }, [search]);
+  }, [search, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();
