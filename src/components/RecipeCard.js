@@ -13,10 +13,10 @@ const Card = styled.div`
     margin-bottom: 16px;
   }
   @media (min-width: 1440px) {
-    width: calc(100% / 3 - 48px);
+    width: calc(100% / 3 - 64px);
   }
   @media (min-width: 2560px) {
-    width: calc(100% / 4 - 48px);
+    width: calc(100% / 4 - 64px);
   }
   margin: 16px 16px 0px 16px;
   &:nth-last-child(1) {

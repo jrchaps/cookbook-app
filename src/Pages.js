@@ -19,8 +19,8 @@ const MainDiv = styled.div`
 `;
 
 const MainMessage = styled.h2`
-  align-self: center;
   text-align: center;
+  font-weight: normal;
   color: ${props => props.theme.black.dark};
   padding: 16px;
   margin: auto;
