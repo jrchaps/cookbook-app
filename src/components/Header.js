@@ -23,20 +23,19 @@ const HeaderBar = styled.header`
       props.isHidden ? 'translateY(-48px)' : 'translateY(0)'};
     padding: 0px 16px;
   }
-  transition: transform 0.3s ${props => props.theme.transitionTimingFunction}
-    0.2s;
+  transition: transform 0.3s ${props => props.theme.transitionTimingFunction};
 `;
 
 const Header = () => {
-  const [scrollPos, setScrollPos] = useState(0);
+  const scrollPosition = useRef(0);
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
 
   useEffect(() => {
     window.onscroll = () => {
-      document.documentElement.scrollTop > scrollPos
+      document.documentElement.scrollTop > scrollPosition.current
         ? setIsHeaderHidden(true)
         : setIsHeaderHidden(false);
-      setScrollPos(document.documentElement.scrollTop);
+      scrollPosition.current = document.documentElement.scrollTop;
     };
   });
 
@@ -176,7 +175,7 @@ const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    history.push(`/?search=${query}`);
+    history.push(`/search?=${query}`);
     dispatch(fetchRecipes(query));
   };
 

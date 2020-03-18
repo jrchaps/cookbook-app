@@ -9,16 +9,15 @@ const Card = styled.div`
   align-items: center;
   width: 100%;
   @media (min-width: 768px) {
-    width: calc(100% / 2 - 64px);
-    margin-bottom: 16px;
+    width: calc(100% / 2 - 96px);
   }
   @media (min-width: 1440px) {
-    width: calc(100% / 3 - 64px);
+    width: calc(100% / 3 - 96px);
   }
   @media (min-width: 2560px) {
-    width: calc(100% / 4 - 64px);
+    width: calc(100% / 4 - 96px);
   }
-  margin: 16px 16px 0px 16px;
+  margin: 32px;
   &:nth-last-child(1) {
     margin-bottom: 16px;
   }
@@ -115,17 +114,13 @@ const FavoriteIcon = styled(FavoriteBorderIcon)`
 const FavoriteButton = props => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorites);
-  const [checked, setChecked] = useState(
-    favorites[props.props.recipe.recipe.uri] ? true : false,
-  );
 
   const toggleFavorite = e => {
-    if (checked) {
+    if (favorites[props.props.recipe.recipe.uri]) {
       dispatch(removeFavorite(props.props.recipe.recipe.uri));
     } else {
       dispatch(addFavorite(props.props.recipe));
     }
-    setChecked(!checked);
   };
 
   const handleButtonMouseDown = e => {
@@ -204,15 +199,17 @@ const Divider = styled.hr`
 const Ingredients = props => {
   const [listHeight, setListHeight] = useState('0px');
   const listRef = useRef();
+  const autoTimeOut = useRef();
 
   const toggleIngredients = e => {
     e.preventDefault();
     if (listHeight === '0px') {
       setListHeight(listRef.current.scrollHeight + 'px');
-      setTimeout(() => {
+      autoTimeOut.current = setTimeout(() => {
         setListHeight('auto');
       }, 300);
     } else {
+      clearTimeout(autoTimeOut.current);
       setListHeight(listRef.current.scrollHeight + 'px');
       setTimeout(() => {
         setListHeight('0px');

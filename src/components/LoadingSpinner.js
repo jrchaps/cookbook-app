@@ -10,6 +10,12 @@ const rotate = keyframes`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 64px);
+`;
+
 const Ring = styled.div`
   align-self: center;
   display: inline-block;
@@ -45,12 +51,14 @@ const RingDiv = styled.div`
 
 const LoadingSpinner = () => {
   return (
-    <Ring className='lds-ring'>
-      <RingDiv></RingDiv>
-      <RingDiv></RingDiv>
-      <RingDiv></RingDiv>
-      <RingDiv></RingDiv>
-    </Ring>
+    <Container>
+      <Ring className='lds-ring'>
+        <RingDiv></RingDiv>
+        <RingDiv></RingDiv>
+        <RingDiv></RingDiv>
+        <RingDiv></RingDiv>
+      </Ring>
+    </Container>
   );
 };
 
