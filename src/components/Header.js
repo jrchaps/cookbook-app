@@ -11,8 +11,8 @@ const HeaderBar = styled.header`
   width: 100%;
   padding: 0px 50px;
   box-sizing: border-box;
+  background: blue;
   z-index: 1;
-  background: ${props => props.theme.color.primary.main};
   box-shadow: ${props => props.theme.shadow};
   transform: ${props =>
     props.isHidden ? 'translateY(-70px)' : 'translateY(0)'};
@@ -25,6 +25,7 @@ const HeaderBar = styled.header`
   }
   transition: transform 0.3s ${props => props.theme.transitionTimingFunction};
 `;
+//background: ${props => props.theme.color.primary.main};
 
 const Header = () => {
   const scrollPosition = useRef(0);
