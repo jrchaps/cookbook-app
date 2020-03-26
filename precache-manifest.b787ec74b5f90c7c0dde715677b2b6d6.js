@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5fca629d7d5a3807d34234a5b82b3fc4",
+    "revision": "04f26be72d55567ea3395668796b6e0b",
     "url": "/cookbook-app/index.html"
   },
   {
