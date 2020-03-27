@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/cookbook-app/static/js/main.0828ece1.chunk.js",
-    "main.js.map": "/cookbook-app/static/js/main.0828ece1.chunk.js.map",
-    "runtime-main.js": "/cookbook-app/static/js/runtime-main.1d8a1885.js",
-    "runtime-main.js.map": "/cookbook-app/static/js/runtime-main.1d8a1885.js.map",
-    "static/css/2.764ccc25.chunk.css": "/cookbook-app/static/css/2.764ccc25.chunk.css",
-    "static/js/2.d3ee6a97.chunk.js": "/cookbook-app/static/js/2.d3ee6a97.chunk.js",
-    "static/js/2.d3ee6a97.chunk.js.map": "/cookbook-app/static/js/2.d3ee6a97.chunk.js.map",
-    "index.html": "/cookbook-app/index.html",
-    "precache-manifest.66912cc791ff3aa4cfc90e175439c2e9.js": "/cookbook-app/precache-manifest.66912cc791ff3aa4cfc90e175439c2e9.js",
-    "service-worker.js": "/cookbook-app/service-worker.js",
-    "static/css/2.764ccc25.chunk.css.map": "/cookbook-app/static/css/2.764ccc25.chunk.css.map",
-    "static/js/2.d3ee6a97.chunk.js.LICENSE.txt": "/cookbook-app/static/js/2.d3ee6a97.chunk.js.LICENSE.txt"
+    "main.js": "/static/js/main.1b5b14f8.chunk.js",
+    "main.js.map": "/static/js/main.1b5b14f8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.453f515a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.453f515a.js.map",
+    "static/css/2.764ccc25.chunk.css": "/static/css/2.764ccc25.chunk.css",
+    "static/js/2.5af48f7e.chunk.js": "/static/js/2.5af48f7e.chunk.js",
+    "static/js/2.5af48f7e.chunk.js.map": "/static/js/2.5af48f7e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2cd2152315fe429892f2988b27af4335.js": "/precache-manifest.2cd2152315fe429892f2988b27af4335.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/static/css/2.764ccc25.chunk.css.map",
+    "static/js/2.5af48f7e.chunk.js.LICENSE.txt": "/static/js/2.5af48f7e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1d8a1885.js",
+    "static/js/runtime-main.453f515a.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.d3ee6a97.chunk.js",
-    "static/js/main.0828ece1.chunk.js"
+    "static/js/2.5af48f7e.chunk.js",
+    "static/js/main.1b5b14f8.chunk.js"
   ]
 }
