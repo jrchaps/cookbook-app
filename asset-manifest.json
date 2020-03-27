@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/cookbook-app/static/js/main.0b5e45e6.chunk.js",
-    "main.js.map": "/cookbook-app/static/js/main.0b5e45e6.chunk.js.map",
-    "runtime-main.js": "/cookbook-app/static/js/runtime-main.aaa5c88a.js",
-    "runtime-main.js.map": "/cookbook-app/static/js/runtime-main.aaa5c88a.js.map",
+    "main.js": "/cookbook-app/static/js/main.0828ece1.chunk.js",
+    "main.js.map": "/cookbook-app/static/js/main.0828ece1.chunk.js.map",
+    "runtime-main.js": "/cookbook-app/static/js/runtime-main.1d8a1885.js",
+    "runtime-main.js.map": "/cookbook-app/static/js/runtime-main.1d8a1885.js.map",
     "static/css/2.764ccc25.chunk.css": "/cookbook-app/static/css/2.764ccc25.chunk.css",
-    "static/js/2.7da21bec.chunk.js": "/cookbook-app/static/js/2.7da21bec.chunk.js",
-    "static/js/2.7da21bec.chunk.js.map": "/cookbook-app/static/js/2.7da21bec.chunk.js.map",
+    "static/js/2.d3ee6a97.chunk.js": "/cookbook-app/static/js/2.d3ee6a97.chunk.js",
+    "static/js/2.d3ee6a97.chunk.js.map": "/cookbook-app/static/js/2.d3ee6a97.chunk.js.map",
     "index.html": "/cookbook-app/index.html",
-    "precache-manifest.15bfeff95a3da87648cdaa96146bae8d.js": "/cookbook-app/precache-manifest.15bfeff95a3da87648cdaa96146bae8d.js",
+    "precache-manifest.17a43bd1c1303b66cc8db2880d71af9a.js": "/cookbook-app/precache-manifest.17a43bd1c1303b66cc8db2880d71af9a.js",
     "service-worker.js": "/cookbook-app/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/cookbook-app/static/css/2.764ccc25.chunk.css.map",
-    "static/js/2.7da21bec.chunk.js.LICENSE": "/cookbook-app/static/js/2.7da21bec.chunk.js.LICENSE"
+    "static/js/2.d3ee6a97.chunk.js.LICENSE.txt": "/cookbook-app/static/js/2.d3ee6a97.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.aaa5c88a.js",
+    "static/js/runtime-main.1d8a1885.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.7da21bec.chunk.js",
-    "static/js/main.0b5e45e6.chunk.js"
+    "static/js/2.d3ee6a97.chunk.js",
+    "static/js/main.0828ece1.chunk.js"
   ]
 }
