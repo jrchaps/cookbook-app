@@ -57,12 +57,10 @@ const HomePage = () => {
       dispatch(networkError(false));
       dispatch(isFetching(true));
       try {
-        console.log('fetching');
         const response = await fetch(
           `https://api.edamam.com/search?q=${randomFood}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`,
         );
         const data = await response.json();
-        console.log(data.hits);
         recipeResults.current = data.hits;
         setRecipes(data.hits);
         dispatch(isFetching(false));
@@ -118,7 +116,9 @@ const SearchPage = () => {
     </MainDiv>
   ) : networkError ? (
     <MainDiv>
-      <MainMessage>There was a network error, Try again later.</MainMessage>
+      <Container>
+        <MainMessage>There was a network error, Try again later.</MainMessage>
+      </Container>
     </MainDiv>
   ) : typeof recipes[0] === 'string' ? (
     <MainDiv>
