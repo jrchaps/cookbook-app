@@ -21,7 +21,8 @@ const favoritesReducer = (state = {}, action) => {
     case ADD_FAVORITE:
       return { [action.uri]: action.recipe, ...state };
     case REMOVE_FAVORITE:
-      return { ...delete state[action.uri], ...state };
+      const { [action.uri]: value, ...newState } = state;
+      return { ...newState };
     default:
       return state;
   }

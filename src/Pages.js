@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
-import { isFetching, networkError } from './store/actions';
+import { fetchRecipes } from './store/actions';
 import LoadingSpinner from './components/LoadingSpinner';
 import RecipeCard from './components/RecipeCard';
-import SubHeader from './components/SubHeader';
-import FavoritesSubHeader from './components/FavoritesSubHeader';
+import Select from './components/Select';
+import FavoritesSelect from './components/FavoritesSelect';
 
 const MainDiv = styled.div`
   display: flex;
@@ -47,31 +47,15 @@ const foods = [
 const HomePage = () => {
   const isFetchingState = useSelector(state => state.isFetching);
   const networkErrorState = useSelector(state => state.networkError);
-  const dispatch = useDispatch();
-  const recipeResults = useRef();
+  const fetchedRecipes = useSelector(state => state.fetchedRecipes);
   const [recipes, setRecipes] = useState([]);
 
-  useLayoutEffect(() => {
-    const fetchHomeRecipes = async () => {
-      const randomFood = foods[Math.floor(Math.random() * 10)];
-      dispatch(networkError(false));
-      dispatch(isFetching(true));
-      try {
-        const response = await fetch(
-          `https://api.edamam.com/search?q=${randomFood}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`,
-        );
-        const data = await response.json();
-        recipeResults.current = data.hits;
-        setRecipes(data.hits);
-        dispatch(isFetching(false));
-        dispatch(networkError(false));
-      } catch (error) {
-        dispatch(isFetching(false));
-        dispatch(networkError(true));
-      }
-    };
-    fetchHomeRecipes();
-  }, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const randomFood = foods[Math.floor(Math.random() * 10)];
+    dispatch(fetchRecipes(randomFood));
+  }, [dispatch]);
 
   return isFetchingState ? (
     <MainDiv>
@@ -93,11 +77,7 @@ const HomePage = () => {
     </MainDiv>
   ) : (
     <MainDiv>
-      <SubHeader
-        setRecipes={setRecipes}
-        recipes={recipes}
-        defaultRecipes={recipeResults.current}
-      />
+      <Select setRecipes={setRecipes} fetchedRecipes={fetchedRecipes} />
       {recipes.map((recipe, i) => (
         <RecipeCard recipe={recipe} i={i} key={i} />
       ))}
@@ -108,7 +88,8 @@ const HomePage = () => {
 const SearchPage = () => {
   const isFetching = useSelector(state => state.isFetching);
   const networkError = useSelector(state => state.networkError);
-  const recipes = useSelector(state => state.fetchedRecipes);
+  const fetchedRecipes = useSelector(state => state.fetchedRecipes);
+  const [recipes, setRecipes] = useState(fetchedRecipes);
 
   return isFetching ? (
     <MainDiv>
@@ -128,6 +109,7 @@ const SearchPage = () => {
     </MainDiv>
   ) : (
     <MainDiv>
+      <Select setRecipes={setRecipes} fetchedRecipes={fetchedRecipes} />
       {recipes.map((recipe, i) => (
         <RecipeCard recipe={recipe} i={i} key={i} />
       ))}
@@ -147,11 +129,7 @@ const FavoritesPage = () => {
     </MainDiv>
   ) : (
     <MainDiv>
-      <FavoritesSubHeader
-        recipes={recipes}
-        setRecipes={setRecipes}
-        defaultRecipes={Object.entries(favorites)}
-      />
+      <FavoritesSelect favorites={favorites} setRecipes={setRecipes} />
       {recipes.map((recipe, i) => (
         <RecipeCard recipe={recipe[1]} key={i} />
       ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import normalize from 'normalize.css';
+import normalize from 'normalize.css'; //eslint-disable-line no-unused-vars
 import { ThemeProvider } from 'styled-components/macro';
 import * as serviceWorker from './serviceWorker';
 import { allReducers } from './store/reducers';
