@@ -179,13 +179,9 @@ const SearchForm = () => {
     dispatch(fetchRecipes(query));
   };
 
-  const handleReset = e => {
+  const handleReset = () => {
     setQuery('');
     inputRef.current.focus();
-  };
-
-  const handleButtonClick = e => {
-    e.preventDefault();
   };
 
   const handleInputChange = e => {
@@ -198,7 +194,7 @@ const SearchForm = () => {
         onReset={handleReset}
         className='search-form'
       >
-        <SearchFormButton type='submit' onMouseDown={handleButtonClick}>
+        <SearchFormButton type='submit' onMouseDown={e => e.preventDefault()}>
           <i className='material-icons'>search</i>
         </SearchFormButton>
         <SearchInput
@@ -208,7 +204,7 @@ const SearchForm = () => {
           ref={inputRef}
         />
         {query && (
-          <SearchFormButton type='reset' onMouseDown={handleButtonClick}>
+          <SearchFormButton type='reset' onMouseDown={e => e.preventDefault()}>
             <i className='material-icons'>clear</i>
           </SearchFormButton>
         )}
