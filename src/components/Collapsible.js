@@ -9,7 +9,7 @@ export const useCollapsible = () => {
     setToggled(!toggled);
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (toggled) {
       ref.current.style.height = `${ref.current.scrollHeight}px`;
       timeout.current = setTimeout(() => {
@@ -18,9 +18,9 @@ export const useCollapsible = () => {
     } else {
       clearTimeout(timeout.current);
       ref.current.style.height = `${ref.current.scrollHeight}px`;
-      if (ref.current.style.height === `${ref.current.scrollHeight}px`) {
+      setTimeout(() => {
         ref.current.style.height = '0px';
-      }
+      }, 10);
     }
   }, [toggled]);
 
