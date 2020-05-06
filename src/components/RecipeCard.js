@@ -178,14 +178,11 @@ const IngredientsButtonIcon = styled.i`
 `;
 
 const IngredientList = styled.ul`
-  height: ${props => props.height};
   width: 100%;
   padding: 0px 8px;
   margin: 0px;
   box-sizing: border-box;
-  overflow: hidden;
   list-style-type: none;
-  transition: height 0.3s ${props => props.theme.transitionTimingFunction};
 `;
 
 const ListItem = styled.li`
@@ -198,42 +195,16 @@ const Divider = styled.hr`
 `;
 
 const Ingredients = props => {
-  const [listHeight, setListHeight] = useState('0px');
-  const listRef = useRef();
-  const autoTimeOut = useRef();
-  const [ref, toggle] = useCollapsible();
-
-  const toggleIngredients = e => {
-    e.preventDefault();
-    if (listHeight === '0px') {
-      setListHeight(listRef.current.scrollHeight + 'px');
-      autoTimeOut.current = setTimeout(() => {
-        setListHeight('auto');
-      }, 300);
-    } else {
-      clearTimeout(autoTimeOut.current);
-      setListHeight(listRef.current.scrollHeight + 'px');
-      setTimeout(() => {
-        setListHeight('0px');
-      });
-    }
-  };
-
-  const handleButtonMouseDown = e => {
-    e.preventDefault();
-  };
+  const [ref, toggle, toggled] = useCollapsible();
 
   return (
     <React.Fragment>
       <IngredientsButton
         onClick={() => toggle()}
-        onMouseDown={handleButtonMouseDown}
+        onMouseDown={e => e.preventDefault()}
       >
         INGREDIENTS
-        <IngredientsButtonIcon
-          className='material-icons'
-          up={listHeight !== '0px'}
-        >
+        <IngredientsButtonIcon className='material-icons' up={toggled}>
           keyboard_arrow_down
         </IngredientsButtonIcon>
       </IngredientsButton>

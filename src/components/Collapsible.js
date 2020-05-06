@@ -30,5 +30,5 @@ export const useCollapsible = () => {
     ref.current.style.height = '0px';
   }, []);
 
-  return [ref, toggle];
+  return [ref, toggle, toggled];
 };
