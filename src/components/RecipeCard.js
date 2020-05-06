@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../store/actions';
+import { useCollapsible } from './Collapsible';
 
 const Card = styled.div`
   display: flex;
@@ -200,6 +201,7 @@ const Ingredients = props => {
   const [listHeight, setListHeight] = useState('0px');
   const listRef = useRef();
   const autoTimeOut = useRef();
+  const [ref, toggle] = useCollapsible();
 
   const toggleIngredients = e => {
     e.preventDefault();
@@ -224,7 +226,7 @@ const Ingredients = props => {
   return (
     <React.Fragment>
       <IngredientsButton
-        onClick={toggleIngredients}
+        onClick={() => toggle()}
         onMouseDown={handleButtonMouseDown}
       >
         INGREDIENTS
@@ -235,7 +237,7 @@ const Ingredients = props => {
           keyboard_arrow_down
         </IngredientsButtonIcon>
       </IngredientsButton>
-      <IngredientList ref={listRef} height={listHeight}>
+      <IngredientList ref={ref}>
         <Divider></Divider>
         {props.props.recipe.recipe.ingredientLines.map((ingredient, i) => (
           <React.Fragment key={i}>
