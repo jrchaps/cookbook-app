@@ -1,4 +1,4 @@
-This app uses the edamam api to allow users to search for recipes from a database. The user can also add their favorite recipes.
+This app uses the edamam API to allow users to search for recipes from a database. The user can also add their favorite recipes.
 
 Technologies I used here: React, Redux, React-Router, create-react-app, styled-components.
 
